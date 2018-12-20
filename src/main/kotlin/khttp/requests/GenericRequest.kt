@@ -140,7 +140,7 @@ class GenericRequest internal constructor(
             if (data != null && this.files.isEmpty()) {
                 if (data is Map<*, *>) {
                     mutableHeaders.putAllIfAbsentWithNull(GenericRequest.DEFAULT_FORM_HEADERS)
-                } else {
+                } else if (!mutableHeaders.containsKey("Content-Type")) {
                     mutableHeaders.putAllIfAbsentWithNull(GenericRequest.DEFAULT_DATA_HEADERS)
                 }
             }
